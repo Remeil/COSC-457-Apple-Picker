@@ -32,8 +32,15 @@ public class ApplePicker : MonoBehaviour {
 
     public void AppleDestroyed() {
         var apples = GameObject.FindGameObjectsWithTag("Apple");
-        foreach (var apple in apples) {
+        foreach (var apple in apples)
+        {
             Destroy(apple);
+        }
+
+        var oranges = GameObject.FindGameObjectsWithTag("Orange");
+        foreach (var orange in oranges)
+        {
+            Destroy(orange);
         }
 
         var index = basketList.Count - 1;
@@ -44,7 +51,8 @@ public class ApplePicker : MonoBehaviour {
 
         if (basketList.Count == 0)
         {
-            SceneManager.LoadScene("_Scene_0");
+            //SceneManager.LoadScene("_Scene_0");
+            SceneManager.LoadScene("GameOver");
         }
     }
 }

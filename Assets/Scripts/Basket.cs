@@ -30,13 +30,19 @@ public class Basket : MonoBehaviour {
             Destroy(collidedWith);
             UpdateScore(100);
         }
+        else if (collidedWith.CompareTag("Orange"))
+        {
+            Destroy(collidedWith);
+            UpdateScore(250);
+        }
     }
 
     void UpdateScore(int scoreMod) {
         var score = int.Parse(scoreCounter.text.Substring(7)) + scoreMod;
         scoreCounter.text = "Score: " + score;
 
-        Debug.Log(score + " > " + HighScore.score);
+        PlayerPrefs.SetInt("ApplePickerCurrentScore", score);
+
         if (score > HighScore.score)
         {
             HighScore.score = score;
